@@ -14,9 +14,21 @@ spec:
         app: guestbook-ui
     spec:
       securityContext:
+        runAsNonRoot: true
         runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 2000
       containers:
         - image: gcr.io/google-samples/gb-frontend:v4
           name: guestbook-ui
+          securityContext:
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            capabilities:
+              drop: ["ALL"]
+              add: []
+            readOnlyRootFilesystem: true
+            seccompProfile:
+              type: RuntimeDefault
           ports:
             - containerPort: 80
