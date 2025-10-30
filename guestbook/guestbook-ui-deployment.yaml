@@ -19,7 +19,7 @@ spec:
         runAsGroup: 1000
         fsGroup: 2000
       containers:
-        - image: gcr.io/google-samples/gb-frontend:v4
+        - image: gcr.io/google-samples/gb-frontend:v5
           name: guestbook-ui
           securityContext:
             allowPrivilegeEscalation: false
